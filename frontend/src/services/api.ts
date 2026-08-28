@@ -63,7 +63,7 @@ export const createSale = (data: SaleCreate) => api.post<Sale>('/sales', data)
 export const getProducts = (shopId?: number) =>
   api.get<Product[]>('/products', { params: shopId ? { shop_id: shopId } : {} })
 export const getSales = (productId?: number) =>
-  api.get<Sale[]>('/sales', { params: productId ? { product_id: productId } : {} })
+  api.get<Sale[]>('/api/sales', { params: productId ? { product_id: productId } : {} })
 export const getRestockOrders = (status?: string) =>
   api.get<RestockOrder[]>('/restock-orders', {
     params: status ? { status_filter: status } : {},
