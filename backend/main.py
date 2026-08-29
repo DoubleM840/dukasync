@@ -294,6 +294,7 @@ async def adjust_stock(
 # Sales  — core domain event; triggers low-stock check
 # ===========================================================================
 @app.post("/sales/", response_model=SaleOut, status_code=status.HTTP_201_CREATED, tags=["Sales"])
+@app.post("/sales", response_model=SaleOut, status_code=status.HTTP_201_CREATED, tags=["Sales"], include_in_schema=False)
 @app.post("/api/sales", response_model=SaleOut, status_code=status.HTTP_201_CREATED, tags=["Sales"])
 async def record_sale(
     payload: SaleCreate,
@@ -340,6 +341,7 @@ async def record_sale(
 
 
 @app.get("/api/sales", response_model=List[SaleOut], tags=["Sales"])
+@app.get("/sales", response_model=List[SaleOut], tags=["Sales"], include_in_schema=False)
 async def list_sales(
     product_id: Optional[int] = None, db: AsyncSession = Depends(get_db)
 ) -> list[Sale]:

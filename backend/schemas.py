@@ -174,6 +174,7 @@ class RestockOrderUpdate(BaseModel):
 class RestockOrderOut(_OrmBase, RestockOrderBase):
     id: int
     triggered_at: datetime
+    created_at: datetime
     expected_delivery: Optional[datetime]
 
 
